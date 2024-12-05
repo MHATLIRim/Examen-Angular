@@ -1,0 +1,31 @@
+<div>
+  <!-- Champ de recherche -->
+  <input type="text" [(ngModel)]="searchKeyword" placeholder="Rechercher par mot-clé" />
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Description</th>
+      <th>Entreprise</th>
+      <th>Nombre d'intéressés</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let stage of filteredStages">
+      <td>{{ stage.titre }}</td>
+      <td>{{ stage.description }}</td>
+      <td>{{ stage.entreprise }}</td>
+      <td>{{ stage.nbrInteresse }}</td>
+      <td>
+        <!-- Bouton Intéressé -->
+        <button (click)="onInterested(stage)">Intéressé</button>
+        
+        <!-- Bouton Supprimer -->
+        <button (click)="onDelete(stage)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

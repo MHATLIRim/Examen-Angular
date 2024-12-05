@@ -1,0 +1,41 @@
+<form (ngSubmit)="onSubmit()" #stageForm="ngForm">
+    <!-- Champ Titre -->
+    <div>
+        <label for="titre">Titre</label>
+        <input type="text" id="titre" name="titre" [(ngModel)]="stage.titre" required #titre="ngModel">
+        <div *ngIf="titre.invalid && titre.touched">Titre est requis.</div>
+    </div>
+
+    <!-- Champ Description -->
+    <div>
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" [(ngModel)]="stage.description" required minlength="3"
+            #description="ngModel">
+        <div *ngIf="description.errors?.['minlength'] && description.touched">
+            Description doit avoir au moins 3 caractères.
+        </div>
+    </div>
+
+    <!-- Champ Entreprise -->
+    <div>
+        <label for="entreprise">Entreprise</label>
+        <input type="text" id="entreprise" name="entreprise" [(ngModel)]="stage.entreprise" required
+            #entreprise="ngModel">
+        <div *ngIf="entreprise.invalid && entreprise.touched">Entreprise est requise.</div>
+    </div>
+
+    <!-- Champ Disponible -->
+    <div>
+        <label for="disponible">Disponible</label>
+        <input type="checkbox" id="disponible" name="disponible" [(ngModel)]="stage.disponible">
+    </div>
+
+    <!-- Champ Nombre d'Intéressés -->
+    <div>
+        <label for="nbrInteresse">Nombre d'Intéressés</label>
+        <input type="number" id="nbrInteresse" name="nbrInteresse" [(ngModel)]="stage.nbrInteresse" [readonly]="true">
+    </div>
+
+    <!-- Bouton Ajouter -->
+    <button type="submit" [disabled]="!stageForm.valid">Ajouter</button>
+</form>
